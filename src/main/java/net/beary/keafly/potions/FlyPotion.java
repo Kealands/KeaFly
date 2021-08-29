@@ -2,6 +2,7 @@ package net.beary.keafly.potions;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -16,6 +17,15 @@ public class FlyPotion {
         ItemMeta im = stack.getItemMeta();
         im.setLore(lore());
         im.setDisplayName(ChatColor.BOLD + "" + ChatColor.GOLD + "Potion of Flight");
+        stack.setItemMeta(im);
+
+        return stack;
+    }
+    public ItemStack stick() {
+        ItemStack stack = new ItemStack(Material.STICK);
+        ItemMeta im = stack.getItemMeta();
+        im.addEnchant(Enchantment.KNOCKBACK, 1000, true);
+        im.setDisplayName(ChatColor.BOLD + "" + ChatColor.GOLD + "STICK");
         stack.setItemMeta(im);
 
         return stack;

@@ -2,6 +2,7 @@ package net.beary.keafly.command;
 
 import net.beary.keafly.potions.FlyPotion;
 import net.beary.keafly.potions.FlySplashPotion;
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -23,9 +24,33 @@ public class KeaFlyCommand implements CommandExecutor {
                     if(args[0].equalsIgnoreCase("potion")) {
                         player.getInventory().addItem(flyPotion.potion());
 
+                    } else {
+                        if(args[0].equalsIgnoreCase("stick")) {
+                            player.getInventory().addItem(flyPotion.stick());
+                        }
                     }
             }
 
+            } else {
+                if(args.length == 2) {
+                    if (args[0].equalsIgnoreCase("splash")) {
+                        Player target = Bukkit.getPlayerExact(args[1]);
+                        if (target != null) {
+                            target.getInventory().addItem(flySplashPotion.splashPotion());
+                        } else {
+                            sender.sendMessage("This player doesn't exist!!!!!!!!");
+                        }
+                    } else {
+                        if (args[0].equalsIgnoreCase("potion")) {
+                            Player target = Bukkit.getPlayerExact(args[1]);
+                            if (target != null) {
+                                target.getInventory().addItem(flySplashPotion.splashPotion());
+                            } else {
+                                sender.sendMessage("This player doesn't exist!!!!!!!!");
+                            }
+                        }
+                    }
+                }
             }
         }
         return false;
