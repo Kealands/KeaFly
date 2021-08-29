@@ -15,9 +15,10 @@ public class KeaFlyCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        Player player = (Player) sender;
         if(sender.hasPermission("keafly.give")) {
             if(args.length == 1) {
+                if(sender instanceof Player) {
+                    Player player = (Player) sender;
                 if(args[0].equalsIgnoreCase("splash")) {
                     player.getInventory().addItem(flySplashPotion.splashPotion());
                 } else {
@@ -25,9 +26,10 @@ public class KeaFlyCommand implements CommandExecutor {
                         player.getInventory().addItem(flyPotion.potion());
 
                     } else {
-                        if(args[0].equalsIgnoreCase("stick")) {
+                        if (args[0].equalsIgnoreCase("stick")) {
                             player.getInventory().addItem(flyPotion.stick());
                         }
+                    }
                     }
             }
 
