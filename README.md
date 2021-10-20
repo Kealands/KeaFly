@@ -10,4 +10,4 @@ Plugin that was specifically made for Kealands.
 
 `keafly.give` - Gives player the splashable or drinkable
 
-(Credit to NoirFly/ZephireNZ for inspiration & copying the text style haha)
+(Credit to NoirFly/ZephireNZ for the inspiration)
