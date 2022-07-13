@@ -1,4 +1,4 @@
-package net.beary.keafly;
+package net.kealands.keafly;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
