@@ -2,6 +2,7 @@ package net.kealands.keafly.Fly;
 
 import net.kealands.keafly.Fly.Tasks.FlightCountdown;
 import net.kealands.keafly.KeaFly;
+import net.kealands.keafly.Util;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -25,11 +26,11 @@ public class FlyManager {
         return flying;
     }
 
-    public void activateFlight(Player player) {
-        getFlying().put(player, 15);
+    public void activateFlight(Player player, int seconds) {
+        getFlying().put(player, seconds);
         player.setAllowFlight(true);
         player.setFlying(true);
-        player.sendMessage("§6§lKeaFly §8| §f§6Flight §fis now activated for §65 minutes§f!");
+        player.sendMessage("§6§lKeaFly §8| §f§6Flight §fis now activated for §6" + Util.transferTime(seconds));
         new FlightCountdown(player).runTaskTimer(KeaFly.inst(), 0, 20);
     }
 

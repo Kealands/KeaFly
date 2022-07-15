@@ -52,7 +52,7 @@ public class FlyListener implements Listener {
         this.potion = new Potion();
         if(!e.getItem().isSimilar(potion.createItemPotion(PotionType.DRINK))) return;
 
-        flyManager.activateFlight(e.getPlayer());
+        flyManager.activateFlight(e.getPlayer(), 300);
     }
 
     @EventHandler
@@ -62,7 +62,7 @@ public class FlyListener implements Listener {
         for(LivingEntity affected : e.getAffectedEntities()) {
             if (affected.getType().equals(EntityType.PLAYER)) {
                 Player player = (Player) affected;
-                flyManager.activateFlight(player);
+                flyManager.activateFlight(player, 210);
             }
         }
         }
