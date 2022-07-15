@@ -3,6 +3,7 @@ package net.kealands.keafly.Fly;
 import net.kealands.keafly.Fly.Tasks.FlightCountdown;
 import net.kealands.keafly.KeaFly;
 import org.bukkit.Bukkit;
+import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
 
@@ -30,5 +31,21 @@ public class FlyManager {
         player.setFlying(true);
         player.sendMessage("§6§lKeaFly §8| §f§6Flight §fis now activated for §65 minutes§f!");
         new FlightCountdown(player).runTaskTimer(KeaFly.inst(), 0, 20);
+    }
+
+    public boolean isPlayerGrounded(Player player) {
+        if(player.getLocation().subtract(0, 1,0).getBlock().getType().equals(Material.AIR)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public void addSafeFall(Player player) {
+        if(isPlayerGrounded(player)) {
+            player.sendMessage("§6§lKeaFly §8| §fSince your grounded SafeFall didn't activate!");
+        } else {
+            safeFall.add(player);
+        }
     }
 }
