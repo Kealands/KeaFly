@@ -6,10 +6,12 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Item;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.PotionSplashEvent;
 import org.bukkit.event.player.PlayerItemConsumeEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 
@@ -29,6 +31,7 @@ public class FlyListener implements Listener {
         flyManager.getSafeFall().remove(player);
 
     }
+
     @EventHandler // Disable safe fall if player lands in water instead
     public void onLiquidEnter(PlayerMoveEvent e) {
         Block block = e.getPlayer().getLocation().getBlock();
@@ -50,6 +53,19 @@ public class FlyListener implements Listener {
         if(!e.getItem().isSimilar(potion.createItemPotion(PotionType.DRINK))) return;
 
         flyManager.activateFlight(e.getPlayer());
+    }
+
+    @EventHandler
+    public void onPlayerSplash(PotionSplashEvent e) {
+        this.potion = new Potion();
+        if(e.getPotion().getItem().isSimilar(potion.createItemPotion(PotionType.SPLASH))) {
+        for(LivingEntity affected : e.getAffectedEntities()) {
+            if (affected.getType().equals(EntityType.PLAYER)) {
+                Player player = (Player) affected;
+                flyManager.activateFlight(player);
+            }
+        }
+        }
     }
 
 
