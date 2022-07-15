@@ -32,7 +32,7 @@ public class FlightCountdown extends BukkitRunnable {
                 player.sendMessage("§6§lKeaFly §8| §fYou're flight has ran out! §7[SAFEFALL ENABLED]");
                 player.setFlying(false);
                 player.setAllowFlight(false);
-                flyManager.safeFall(player);
+                flyManager.getSafeFall().add(player);
                 cancel();
             } else {
                 time--;

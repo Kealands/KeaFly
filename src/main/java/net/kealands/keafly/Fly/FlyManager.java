@@ -12,17 +12,20 @@ import java.util.*;
 public class FlyManager {
 
     private static HashMap<Player, Integer> flying = new HashMap<>();
+    private static List<Player> safeFall = new ArrayList<>();
 
-    public void safeFall(Player player) {
-        player.sendMessage("lol i havent even coded safe fall KEKW");
+    public List<Player> getSafeFall() {
+        return safeFall;
     }
+
+
 
     public HashMap<Player, Integer> getFlying() {
         return flying;
     }
 
     public void activateFlight(Player player) {
-        getFlying().put(player, 300);
+        getFlying().put(player, 15);
         player.setAllowFlight(true);
         player.setFlying(true);
         player.sendMessage("§6§lKeaFly §8| §f§6Flight §fis now activated for §65 minutes§f!");
