@@ -22,7 +22,7 @@ public class FlyManager {
     }
 
     public void activateFlight(Player player) {
-        getFlying().put(player, 600);
+        getFlying().put(player, 300);
         player.setAllowFlight(true);
         player.setFlying(true);
         player.sendMessage("§6§lKeaFly §8| §f§6Flight §fis now activated for §65 minutes§f!");

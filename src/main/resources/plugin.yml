@@ -1,7 +1,8 @@
 name: KeaFly
 version: '${project.version}'
-main: net.beary.keafly.KeaFly
+main: net.kealands.keafly.KeaFly
 api-version: 1.17
 commands:
   keafly:
-    description: KeaFly Main Command.
+    description: Keafly Main Command.
+

@@ -1,6 +1,7 @@
 package net.kealands.keafly.Fly.Tasks;
 
 import net.kealands.keafly.Fly.FlyManager;
+import net.kealands.keafly.Util;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
@@ -28,7 +29,7 @@ public class FlightCountdown extends BukkitRunnable {
         } else {
             if(time <= 0) {
                 flyManager.getFlying().remove(player);
-                player.sendMessage("§6§lKeaFly §8| §fYou're flight has ran out! §8[SAFEFALL ENABLED]");
+                player.sendMessage("§6§lKeaFly §8| §fYou're flight has ran out! §7[SAFEFALL ENABLED]");
                 player.setFlying(false);
                 player.setAllowFlight(false);
                 flyManager.safeFall(player);
@@ -36,7 +37,7 @@ public class FlightCountdown extends BukkitRunnable {
             } else {
                 time--;
                 flyManager.getFlying().replace(player, flyManager.getFlying().get(player) - 1);
-                String text = "§fYou've got §6%time%s §fleft on your flight§6!".replace("%time%", String.valueOf(time));
+                String text = "§fYou've got §6%time% §fleft on your flight§6!".replace("%time%", Util.transferTime(time));
                 player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(text));
             }
         }
